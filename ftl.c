@@ -302,11 +302,6 @@ static void ssd_init_params(struct ssdparams *spp, FemuCtrl *n)
     spp->luns_per_ch = n->luns_per_ch; // 8
     spp->nchs = n->nchs; // 8
 
-    spp->pg_rd_lat = n->pg_rd_lat;
-    spp->pg_wr_lat = n->pg_wr_lat;
-    spp->blk_er_lat = n->blk_er_lat;
-    spp->ch_xfer_lat = n->ch_xfer_lat;
-
     /* calculated values */
     spp->secs_per_blk = spp->secs_per_pg * spp->pgs_per_blk;
     spp->secs_per_pl = spp->secs_per_blk * spp->blks_per_pl;
