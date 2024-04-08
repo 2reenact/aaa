@@ -858,7 +858,7 @@ static uint64_t ssd_write(struct ssd *ssd, NvmeRequest *req)
     return maxlat;
 }
 
-void main(void *arg)
+void run_femu(void *arg)
 {
     FemuCtrl *n = (FemuCtrl *)arg;
     struct ssd *ssd = malloc(sizeof(struct ssd));
@@ -873,7 +873,9 @@ void main(void *arg)
 		if (n->req) {
 			req = n->req;
 			n->req = NULL;
-		}
+		} else
+			continue;
+
 		switch (req->opcode) {
 			case NVME_CMD_WRITE:
 				lat = ssd_write(ssd, req);
